@@ -28,7 +28,7 @@ return (
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            HK Point
+            Heritage Keeper App
           </Typography>
           {auth && (
             <div>

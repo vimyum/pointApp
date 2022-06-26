@@ -2,6 +2,7 @@ import { useRef, useState, useCallback } from "react";
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import ForestIcon from '@mui/icons-material/Forest';
 
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
@@ -29,10 +30,15 @@ const TopView: React.FC<Props> = (props) => {
     <Typography component="div" variant="h6">
       あなたの保有ポイント
     </Typography>
-    <Typography component="div" variant="h2" sx={{...boxSx, mb: 5}}>
+    <Box sx={{textAlign: 'center'}}>
+    <ForestIcon sx={{ fontSize: 42 }} color="primary" />
+    <Typography component="span" variant="h2" sx={{...boxSx, mb: 5, ml:1, display: 'inline-block', mr: 2}}>
       {userInfo.point.toLocaleString()}
     </Typography>
-
+    <Typography gutterBottom component="span" sx={{fontSize: '0.7em'}}>
+           ポイント
+    </Typography>
+</Box>
 <Box sx={boxSx}>
     <Button variant="outlined" color="primary" component={Link} to="/pay" sx={buttonSx} >
       ポイントを利用する
