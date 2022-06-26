@@ -1026,6 +1026,11 @@ postcss@^8.4.13:
     picocolors "^1.0.0"
     source-map-js "^1.0.2"
 
+prettier@^2.7.1:
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.7.1.tgz#e235806850d057f97bb08368a4f7d899f7760c64"
+  integrity sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==
+
 prop-types@^15.6.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
@@ -1077,6 +1082,13 @@ react-router@6.3.0:
   integrity sha512-7Wh1DzVQ+tlFjkeo+ujvjSqSJmkt1+8JO+T5xklPlgrh70y7ogx75ODRW0ThWhY7S+6yEDks8TYrtQe/aoboBQ==
   dependencies:
     history "^5.2.0"
+
+react-sweetalert2@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/react-sweetalert2/-/react-sweetalert2-0.5.2.tgz#83f60963669fd4ab9e193beb7f1c56a1a5934cd7"
+  integrity sha512-6BxyApbQT1prCG5KUBTkc3+64CWpKAJCjd0Bvv+pmwEGYI9QeaDoH/sP8NeM4cMZgEplFsq6B/8noHoF1w/nzA==
+  dependencies:
+    sweetalert2 "^11.3.5"
 
 react-transition-group@^4.4.2:
   version "4.4.2"
@@ -1186,6 +1198,16 @@ supports-preserve-symlinks-flag@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz#6eda4bd344a3c94aea376d4cc31bc77311039e09"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
+
+sweetalert2-react-content@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/sweetalert2-react-content/-/sweetalert2-react-content-5.0.0.tgz#281466d1fe4c81f100e3a65daa0bfbab32c1a30d"
+  integrity sha512-j0R0+CN7DkgZIdRqU33NIdazleleyjJp1k3KmunnVYU+MLFsuhiOkV/jc7DfkvY3lhPqmg8OTe2n4/9/KMo4vA==
+
+sweetalert2@^11.3.5, sweetalert2@^11.4.18:
+  version "11.4.18"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.4.18.tgz#fd8f57adacffad472ff0e28d6fc029ad521d14b2"
+  integrity sha512-BZPTQI54NYdjIVe2tmsS5JVU7E623P3Sv4ce3BO8V6PdeIdGPGmQm43ojr1cnpGJ1xYhbdwsHIH+t5tICvZ6ZA==
 
 to-fast-properties@^2.0.0:
   version "2.0.0"

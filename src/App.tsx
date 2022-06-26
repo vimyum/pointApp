@@ -1,5 +1,13 @@
 import { useRef, useState, useCallback } from "react";
 import CssBaseline from '@mui/material/CssBaseline';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import RestoreIcon from '@mui/icons-material/Restore';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ArchiveIcon from '@mui/icons-material/Archive';
+import EventNoteIcon from '@mui/icons-material/EventNote';
+import HelpIcon from '@mui/icons-material/Help';
+import QrCode2Icon from '@mui/icons-material/QrCode2';
 
 import MyAppBar from "./components/appbar";
 import {
@@ -38,6 +46,8 @@ const myTheme = createTheme({
 
 function App() {
   const [userInfo, setUserInfo] = useState(dummyUser);
+  const [value, setValue] = useState(0);
+
   return (<div>
    <CssBaseline />
    <ThemeProvider theme={myTheme}>
@@ -49,6 +59,23 @@ function App() {
                 <Route path="/receive" element={<ReceiveView />} />
             </Routes>
     </BrowserRouter>
+    <BottomNavigation
+          showLabels
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+          }}
+          style={{
+          position: "fixed",
+          bottom: 0,
+          width: "100%",
+        }}
+        >
+          <BottomNavigationAction label="ポイント" icon={<QrCode2Icon />} />
+          <BottomNavigationAction label="イベント" icon={<EventNoteIcon />} />
+          <BottomNavigationAction label="ヘルプ" icon={<HelpIcon />} />
+        </BottomNavigation>
+
     </ThemeProvider>
     </div>)
 }
