@@ -11,13 +11,14 @@ import Button from '@mui/material/Button';
 import { UserInfo } from "../schemas/schema";
 
 const buttonSx = {
-  width: '80%'
+  width: '80%',
+  fontSize: '1.2em'
 }
 
 const boxSx = {
  display: 'flex',
  justifyContent: 'center',
- my: 2
+ my: 2,
 };
 
 type Props = {
@@ -36,7 +37,7 @@ const TopView: React.FC<Props> = (props) => {
     <Typography component="span" variant="h2" sx={{...boxSx, mb: 5, ml:1, display: 'inline-block', mr: 2}}>
       {userInfo.point.toLocaleString()}
     </Typography>
-    <Typography gutterBottom component="span" sx={{fontSize: '0.7em'}}>
+    <Typography gutterBottom component="span" sx={{fontSize: '0.9em'}}>
            ポイント
     </Typography>
 </Box>

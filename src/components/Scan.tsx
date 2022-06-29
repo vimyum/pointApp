@@ -11,7 +11,7 @@ const videoHeight = 360;
 const videoConstraints = {
   width: videoWidth,
   height: videoHeight,
-  facingMode: "user",
+  facingMode: "environment",
 };
 
 interface ScanProps {
@@ -25,9 +25,12 @@ const Scan: React.FC<ScanProps> = ({setCode, setExit, interval = 200}: ScanProps
   const [useManualInput, setUseManualInput] = useState<boolean>(false);
   const webcamRef = useRef<Webcam>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const timerRef = useRef(0);
 
 const manualHandler = () => {
-    clearTimeout(timerId);
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
     setUseManualInput(true);
 }
 
@@ -36,7 +39,7 @@ const manualHandler = () => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext('2d');
 
-    if (!video || !video.video || !canvas || !ctx || !video.video.videoWidth) {
+    if (!video || !(video.video) || !canvas || !ctx || !(video.video.videoWidth)) {
           setTimerId(setTimeout(() => { capture() }, interval));
           return;
     }
@@ -59,8 +62,11 @@ const manualHandler = () => {
 
 
   useEffect(() => {
-    console.log("start timer..")
-    setTimerId(setTimeout(() => { capture() }, interval));
+    console.log("start timer.... %d", timerRef.current);
+    if (!timerRef.current) {
+      console.log('set timer')
+      timerRef.current = setTimeout(() => { capture() }, interval);
+    }
   },[]);
 
   const QRScan = () => (
@@ -70,7 +76,7 @@ const manualHandler = () => {
         </Typography>
             <Webcam
               audio={false}
-              width={videoWidth}
+              width='100%'
               height={videoHeight}
               ref={webcamRef}
               screenshotFormat="image/jpeg"

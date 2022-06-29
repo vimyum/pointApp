@@ -46,6 +46,10 @@ const myTheme = createTheme({
  }
 });
 
+const navButtonSx = {
+  fontSize: "1.2"
+}
+
 function App() {
   const [userInfo, setUserInfo] = useState(dummyUser);
   const [value, setValue] = useState(0);
@@ -72,9 +76,9 @@ function App() {
           width: "100%",
         }}
         >
-          <BottomNavigationAction label="ポイント" icon={<QrCode2Icon />} component={Link} to="/" />
-          <BottomNavigationAction label="イベント" icon={<EventNoteIcon />} />
-          <BottomNavigationAction label="ヘルプ" icon={<HelpIcon />} />
+          <BottomNavigationAction label="ポイント" icon={<QrCode2Icon fontSize="large"/>} component={Link} to="/" />
+          <BottomNavigationAction label="イベント" icon={<EventNoteIcon fontSize="large"/>} />
+          <BottomNavigationAction label="ヘルプ" icon={<HelpIcon fontSize="large"/>} />
         </BottomNavigation>
     </BrowserRouter>
     </ThemeProvider>
