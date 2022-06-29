@@ -3,6 +3,7 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import ForestIcon from '@mui/icons-material/Forest';
+import {QRCodeSVG} from 'qrcode.react';
 
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
@@ -48,6 +49,9 @@ const TopView: React.FC<Props> = (props) => {
     <Button variant="outlined" color="primary" component={Link} to="/receive" sx={buttonSx}>
       ポイントを受け取る
     </Button>
+</Box>
+<Box sx={{...boxSx, mt: 5}}>
+  <QRCodeSVG value='1234567890' fgColor='#409488' />,
 </Box>
     </Container>
   </div>)

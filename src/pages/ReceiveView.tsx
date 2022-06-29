@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import CardPicture from '../assets/HKCardPicture.jpeg';
 
 import Scan from "../components/Scan";
+import ManualInput from "../components/ManualInput";
 import ConfirmCard from "../components/ConfirmCard";
 import Swal from 'sweetalert2'
 
@@ -22,11 +23,12 @@ const videoConstraints = {
 
 const ReceiveView: React.FC = () => {
   const [code, setCode] = useState(null);
+  const [isManualInput, setIsManualInput] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const confirm = () => {
   Swal.fire({
-    text: '正常にポイントが付与されました',
+    text: 'ポイントが付与されました',
     icon: 'success',
     confirmButtonText: 'OK',
     confirmButtonColor: '#009688',
@@ -39,7 +41,9 @@ const ReceiveView: React.FC = () => {
 
   const comment = 'MTBコース整備活動ボランティアの参加ポイントです'
   return ( code ? <ConfirmCard callback={confirm} comment={comment}
-    cardPicture={CardPicture} point={500} /> : <Scan setCode={setCode} />);
+    cardPicture={CardPicture} point={500} /> :
+     (isManualInput ?  <ManualInput setCode={setCode} setExit={setIsManualInput}/> :
+      <Scan setCode={setCode} setExit={setIsManualInput} />));
 }
 
 export default ReceiveView;

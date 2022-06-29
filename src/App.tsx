@@ -1,4 +1,4 @@
-import { useRef, useState, useCallback } from "react";
+import React, { useRef, useState, useCallback } from "react";
 import CssBaseline from '@mui/material/CssBaseline';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
@@ -14,7 +14,9 @@ import {
   BrowserRouter,
   Routes,
   Route,
+  Link,
 } from 'react-router-dom'
+
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { teal, grey } from '@mui/material/colors';
 
@@ -58,7 +60,6 @@ function App() {
                 <Route path="/pay" element={<PayView />} />
                 <Route path="/receive" element={<ReceiveView />} />
             </Routes>
-    </BrowserRouter>
     <BottomNavigation
           showLabels
           value={value}
@@ -71,11 +72,11 @@ function App() {
           width: "100%",
         }}
         >
-          <BottomNavigationAction label="ポイント" icon={<QrCode2Icon />} />
+          <BottomNavigationAction label="ポイント" icon={<QrCode2Icon />} component={Link} to="/" />
           <BottomNavigationAction label="イベント" icon={<EventNoteIcon />} />
           <BottomNavigationAction label="ヘルプ" icon={<HelpIcon />} />
         </BottomNavigation>
-
+    </BrowserRouter>
     </ThemeProvider>
     </div>)
 }
