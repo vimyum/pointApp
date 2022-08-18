@@ -13,7 +13,7 @@ import TextField from '@mui/material/TextField';
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 
-import { UserInfo } from "../schemas/schema";
+import { UserDbInfo } from "../schemas/schema";
 import {auth} from "../App"
 
 const buttonSx = {
@@ -43,27 +43,24 @@ const schema = yup.object({
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&].*$/,
       'パスワードが弱いです'
     ),
+  tally: yup
+    .string()
+    .required('必須です')
+    .matches(
+      /^つちざわ|tsuchizawa$/,
+      '正しくありません'
+    ),
 })
 
 interface FormInput {
   name: string
   email: string
   password: string
+  tally: string
 }
 
-const onRegister: SubmitHandler<FormInput> = (data: FormInput) => {
-  console.log(`submit: %o`, data)
-  createUserWithEmailAndPassword(auth, data.email, data.password)
-  .then(() => {
-    console.log('ユーザー作成完了')
-  })
-  .catch((error) => {
-    console.log('ユーザー作成失敗', error);
-  });
-}
-
-const RegisterView: React.FC<{handleCancel: any}> = (props) => {
-  const {handleCancel} = props;
+const RegisterView: React.FC<{handleCancel: any, writeUserData: (userDbInfo: UserDbInfo) => void}> = (props) => {
+  const {handleCancel, writeUserData} = props;
 
   const [name, setName] = useState<string>("");
   const [email, setPhone] = useState<string>("");
@@ -74,7 +71,23 @@ const RegisterView: React.FC<{handleCancel: any}> = (props) => {
     resolver: yupResolver(schema),
   });
 
- 
+const onRegister: SubmitHandler<FormInput> = (data: FormInput) => {
+  console.log(`submit: %o`, data)
+  createUserWithEmailAndPassword(auth, data.email, data.password)
+  .then((userCredential) => {
+    console.log('ユーザー作成完了')
+    writeUserData({
+      userId: userCredential.user.uid,
+      name: data.name,
+      email: data.email,
+      balance: 300,
+      role: "user",
+    });
+  })
+  .catch((error) => {
+    console.log('ユーザー作成失敗', error);
+  });
+} 
   return (<div>
    <Container maxWidth="xs" sx={{mt: 5, mb: 1}}>
     <Typography component="h5" variant="h5" sx={{textAlign: 'center'}}>
@@ -108,12 +121,23 @@ const RegisterView: React.FC<{handleCancel: any}> = (props) => {
 <TextField
           required
           id="outlined-required"
-          label="合言葉"
+          label="パスワード"
           fullWidth={true}
           sx={{my: 1}}
           {...register('password')}
           error={'password' in errors}
           helperText={errors.password?.message}
+        />
+
+<TextField
+          required
+          id="outlined-required"
+          label="合言葉"
+          fullWidth={true}
+          sx={{my: 1}}
+          {...register('tally')}
+          error={'tally' in errors}
+          helperText={errors.tally?.message}
         />
 
     <Button variant="contained" color="primary" sx={buttonSx} 

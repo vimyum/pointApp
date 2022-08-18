@@ -13,7 +13,7 @@ import TextField from '@mui/material/TextField';
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 
-import { UserInfo } from "../schemas/schema";
+import { UserDbInfo } from "../schemas/schema";
 import {auth} from "../App"
 import {signInWithEmailAndPassword} from "firebase/auth";
 
@@ -49,7 +49,6 @@ const onLogin: SubmitHandler<FormInput> = async (data: FormInput) => {
   } catch(error) {
     alert("メールアドレスまたはパスワードが間違っています");
   }
-  console.log("ぽこたんインしたお")
 }
 
 const LoginView: React.FC<{handleCancel: any}> = (props) => {
@@ -87,12 +86,13 @@ const LoginView: React.FC<{handleCancel: any}> = (props) => {
 <TextField
           required
           id="outlined-required"
-          label="合言葉"
+          label="パスワード"
           fullWidth={true}
           sx={{my: 1}}
           {...register('password')}
           error={'password' in errors}
           helperText={errors.password?.message}
+          type="password"
         />
 
     <Button variant="contained" color="primary" sx={buttonSx} 

@@ -8,8 +8,7 @@ import {QRCodeSVG} from 'qrcode.react';
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 
-// import { UserInfo } from "../schemas/schema";
-import { User } from 'firebase/auth'
+import { UserDbInfo } from "../schemas/schema";
 
 const buttonSx = {
   width: '80%',
@@ -23,20 +22,16 @@ const boxSx = {
 };
 
 type Props = {
-  userInfo: User;
+  userInfo: UserDbInfo;
 };
 
 const TopView: React.FC<Props> = (props) => {
   const {userInfo} = props;
   return (<div>
    <Container maxWidth="xs" sx={{mt: 5, mb: 1}}>
-    <Typography component="div" variant="h6">
-      あなたの保有ポイント
-    </Typography>
     <Box sx={{textAlign: 'center'}}>
-    <ForestIcon sx={{ fontSize: 42 }} color="primary" />
     <Typography component="span" variant="h2" sx={{...boxSx, mb: 5, ml:1, display: 'inline-block', mr: 2}}>
-      {/* userInfo.point.toLocaleString() */ "3000" }
+      { userInfo.balance.toLocaleString() }
     </Typography>
     <Typography gutterBottom component="span" sx={{fontSize: '0.9em'}}>
            ポイント
@@ -53,7 +48,7 @@ const TopView: React.FC<Props> = (props) => {
     </Button>
 </Box>
 <Box sx={{...boxSx, mt: 5}}>
-  <QRCodeSVG value='1234567890' fgColor='#409488' />,
+  <QRCodeSVG value={userInfo.userId} fgColor='#409488' />,
 </Box>
     </Container>
   </div>)

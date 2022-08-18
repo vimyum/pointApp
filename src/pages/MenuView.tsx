@@ -9,6 +9,8 @@ import Button from '@mui/material/Button';
 import LoginView from './LoginView'
 import RegisterView from './RegisterView'
 
+import { UserDbInfo } from "../schemas/schema";
+
 const buttonSx = {
   width: '80%',
   fontSize: '1.2em',
@@ -17,10 +19,10 @@ const buttonSx = {
 
 type LoginType = null | "login" | "register"
 
-const MenuView: React.FC = () => {
+const MenuView: React.FC<{writeUserData: (userDbInfo: UserDbInfo) => void}> = (props) => {
+  const {writeUserData} = props;
 
   const [type, setType] = useState<LoginType>(null)
-
   const handleCancel = () => {
     setType(null)
   }
@@ -43,7 +45,9 @@ const MenuView: React.FC = () => {
     </div>)
   }
 
-  return (type == "login" ? <LoginView handleCancel={handleCancel} /> : <RegisterView handleCancel={handleCancel}/>);
+  return (type == "login" ? 
+   <LoginView handleCancel={handleCancel} /> :
+   <RegisterView handleCancel={handleCancel} writeUserData={writeUserData} />);
 }
 
 export default MenuView;

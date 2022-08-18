@@ -1,6 +1,7 @@
-export interface UserInfo {
-  id: string;
-  displayName: string;
+export interface UserDbInfo {
+  userId: string;
+  name: string;
+  email: string;
   role: "admin" | "user";
-  point: number;
+  balance: number;
 }
