@@ -6,14 +6,10 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
 
-const MyAppBar = () => {
+const MyAppBar = (props: any) => {
     const auth = true;
+    const {handleSignOut} = props;
 return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -38,6 +34,7 @@ return (
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 color="inherit"
+                onClick={handleSignOut}
               >
                 <AccountCircle />
               </IconButton>

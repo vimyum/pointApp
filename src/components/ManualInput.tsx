@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -11,6 +11,27 @@ interface ManualInputProps {
   setCode: any;
   setExit: any;
   pay?: boolean;
+}
+
+const AmountField = (pay: boolean) => {
+  if (pay) {
+  return 
+  (<React.Fragment>
+    <Box>
+      <Typography component="div" variant="h6" sx={{my:2}}>
+        利用金額
+      </Typography>
+    </Box>
+    <Box>
+         <TextField
+          error={false}
+          helperText=""
+          variant="outlined"
+          fullWidth={true}
+        />
+    </Box>
+</React.Fragment>);
+  }
 }
 
 const ManualInput: React.FC<ManualInputProps> = ({setCode, setExit, pay = false}: ManualInputProps) => {

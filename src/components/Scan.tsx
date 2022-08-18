@@ -40,7 +40,7 @@ const manualHandler = () => {
     const ctx = canvas?.getContext('2d');
 
     if (!video || !(video.video) || !canvas || !ctx || !(video.video.videoWidth)) {
-          setTimerId(setTimeout(() => { capture() }, interval));
+          setTimerId(window.setTimeout(() => { capture() }, interval));
           return;
     }
       canvas.width = video.video.videoWidth;
@@ -56,7 +56,7 @@ const manualHandler = () => {
           console.log("Detected QR! %o", code)
           setCode(code.data);
       } else {
-          setTimerId(setTimeout(() => { capture() }, interval));
+          setTimerId(window.setTimeout(() => { capture() }, interval));
       }
   }, [webcamRef, canvasRef]);
 
@@ -65,7 +65,7 @@ const manualHandler = () => {
     console.log("start timer.... %d", timerRef.current);
     if (!timerRef.current) {
       console.log('set timer')
-      timerRef.current = setTimeout(() => { capture() }, interval);
+      timerRef.current = window.setTimeout(() => { capture() }, interval);
     }
   },[]);
 

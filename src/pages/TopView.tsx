@@ -8,7 +8,8 @@ import {QRCodeSVG} from 'qrcode.react';
 import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 
-import { UserInfo } from "../schemas/schema";
+// import { UserInfo } from "../schemas/schema";
+import { User } from 'firebase/auth'
 
 const buttonSx = {
   width: '80%',
@@ -22,7 +23,7 @@ const boxSx = {
 };
 
 type Props = {
-  userInfo: UserInfo;
+  userInfo: User;
 };
 
 const TopView: React.FC<Props> = (props) => {
@@ -35,7 +36,7 @@ const TopView: React.FC<Props> = (props) => {
     <Box sx={{textAlign: 'center'}}>
     <ForestIcon sx={{ fontSize: 42 }} color="primary" />
     <Typography component="span" variant="h2" sx={{...boxSx, mb: 5, ml:1, display: 'inline-block', mr: 2}}>
-      {userInfo.point.toLocaleString()}
+      {/* userInfo.point.toLocaleString() */ "3000" }
     </Typography>
     <Typography gutterBottom component="span" sx={{fontSize: '0.9em'}}>
            ポイント
