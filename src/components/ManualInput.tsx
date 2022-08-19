@@ -13,34 +13,13 @@ interface ManualInputProps {
   pay?: boolean;
 }
 
-const AmountField = (pay: boolean) => {
-  if (pay) {
-  return 
-  (<React.Fragment>
-    <Box>
-      <Typography component="div" variant="h6" sx={{my:2}}>
-        利用金額
-      </Typography>
-    </Box>
-    <Box>
-         <TextField
-          error={false}
-          helperText=""
-          variant="outlined"
-          fullWidth={true}
-        />
-    </Box>
-</React.Fragment>);
-  }
-}
-
 const ManualInput: React.FC<ManualInputProps> = ({setCode, setExit, pay = false}: ManualInputProps) => {
   const [inputValue, setInputValue] = useState<string>("");
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
 
-  const typeOfCodeStr = pay ? 'ポイント利用コード' : 'ポイント受け取りコード';
+  const typeOfCodeStr = pay ? '利用先コード' : 'ポイント受け取りコード';
   return (<Box sx={{flexDirection: 'column', textAlign: 'center', justifyContent: 'center', display: 'flex', py: 8, px: 5}}>
     <Box>
       <Typography component="div" variant="h6" sx={{my:2}}>

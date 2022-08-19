@@ -13,10 +13,11 @@ interface ConfirmCardProps {
   cardPicture: string;
   point: number;
   comment: string;
+  used: boolean;
 }
 
 const ConfirmCard: React.FC<ConfirmCardProps> = (props) => {
-  const {callback, cardPicture, point, comment} = props;
+  const {callback, cardPicture, point, comment, used} = props;
   const navigate = useNavigate();
 
   return (<Box sx={{textAlign: 'center', justifyContent: 'center', display: 'flex'}}>
@@ -40,7 +41,8 @@ const ConfirmCard: React.FC<ConfirmCardProps> = (props) => {
       </CardContent>
       <CardActions sx={{display: 'flex', justifyContent: 'space-around'}}>
         <Box sx={{flexGrow: "1"}} >
-          <Button onClick={callback} size="small" variant="contained" sx={{width: '80%'}}>受け取る</Button>
+          <Button onClick={callback} size="small" variant="contained" sx={{width: '80%'}}
+          disabled={used} >{used ? "受取り済み" : "受け取る"}</Button>
         </Box>
         <Box>
         <Button size="small" variant="outlined" sx={{width: '100%'}}

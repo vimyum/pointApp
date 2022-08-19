@@ -1,4 +1,4 @@
-import React, { useRef, useState, useCallback, useEffect } from "react";
+import React, { useRef, useState, useEffect, createContext } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
@@ -25,13 +25,13 @@ import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged, User, signOut } from "firebase/auth";
 
 import firebaseConfig from "./config/firebaseConfig";
-import { getDatabase, ref, set, onValue, get, child } from "firebase/database";
+import { getDatabase, ref, set, onValue } from "firebase/database";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase();
-
 export const auth = getAuth(app);
+export const UserContext = createContext<UserDbInfo | null>(null);
 
 const myTheme = createTheme({
   palette: {
@@ -77,7 +77,7 @@ function App() {
     const db = getDatabase(app);
     const { userId, name, email, role, balance } = userDbInfo;
     set(ref(db, "users/" + userId), {
-      username: name,
+      name: name,
       email: email,
       role: role,
       balance: balance,
@@ -98,6 +98,7 @@ function App() {
     <div>
       <CssBaseline />
       <ThemeProvider theme={myTheme}>
+        <UserContext.Provider value={userInfo}>
         <MyAppBar handleSignOut={handleSignOut} />
         <BrowserRouter>
           <Routes>
@@ -141,6 +142,7 @@ function App() {
             />
           </BottomNavigation>
         </BrowserRouter>
+        </UserContext.Provider>
       </ThemeProvider>
     </div>
   );

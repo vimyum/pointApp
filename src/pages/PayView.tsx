@@ -1,16 +1,16 @@
-import { useRef, useState, useCallback, useEffect } from "react";
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import { useRef, useState, useContext } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
+import { getDatabase, ref, child, get, update } from "firebase/database";
 
-import CardPicture from '../assets/HKCardPicture.jpeg';
+import { UserContext } from "../App";
 
 import Scan from "../components/Scan";
 import ManualInput from "../components/ManualInput";
-import ConfirmCard from "../components/ConfirmCard";
+import PaymentForm from "../components/PaymentForm";
 import Swal from 'sweetalert2'
+import { UserDbInfo } from "../schemas/schema";
+import { getAdditionalUserInfo } from "firebase/auth";
 
 const videoWidth = 540;
 const videoHeight = 360;
@@ -22,28 +22,39 @@ const videoConstraints = {
 };
 
 const PayView: React.FC = () => {
-  const [code, setCode] = useState(null);
+  const [payee, setPayee] = useState<UserDbInfo | null>(null);
   const [isManualInput, setIsManualInput] = useState<boolean>(false);
   const navigate = useNavigate();
+  const userInfo = useContext(UserContext) as UserDbInfo;
 
-  const confirm = () => {
-  Swal.fire({
-    text: 'ポイントが付与されました',
-    icon: 'success',
-    confirmButtonText: 'OK',
-    confirmButtonColor: '#009688',
-    focusConfirm: false,
-    allowOutsideClick: false,
-  }).then(() => {
-    navigate("/");
-  });
-  };
+  const handleSetPayee = async (code: string) => {
+      const dbRef = ref(getDatabase());
+      console.log("payee code: %o", code);
+      const snapshot = await get(child(dbRef, `users/${code}`)).catch(
+        (error) => {
+          console.error(error);
+        }
+      );
 
-  const comment = 'MTBコース整備活動ボランティアの参加ポイントです'
-  return ( code ? <ConfirmCard callback={confirm} comment={comment}
-    cardPicture={CardPicture} point={500} /> :
-     (isManualInput ?  <ManualInput setCode={setCode} setExit={setIsManualInput} pay /> :
-      <Scan setCode={setCode} setExit={setIsManualInput} />));
+      if (snapshot?.exists()) {
+        setPayee({...snapshot.val(), userId: code});
+      } else {
+        Swal.fire({
+          text: "コードが正しくありません",
+          icon: "error",
+          confirmButtonText: "OK",
+          confirmButtonColor: "#009688",
+          focusConfirm: false,
+          allowOutsideClick: false,
+        }).then(() => {
+          navigate("/");
+        });
+      }
+    };
+
+  return ( payee ? <PaymentForm callback={()=>{}} userInfo={userInfo} payeeInfo={payee} />:
+     (isManualInput ?  <ManualInput setCode={handleSetPayee} setExit={setIsManualInput} pay /> :
+      <Scan setCode={handleSetPayee} setExit={setIsManualInput} />));
 }
 
 export default PayView;
