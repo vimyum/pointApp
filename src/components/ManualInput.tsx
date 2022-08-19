@@ -61,7 +61,7 @@ const ManualInput: React.FC<ManualInputProps> = ({setCode, setExit, pay = false}
        <Button variant="outlined" onClick={()=> setExit(false)} fullWidth >QRコードを読み取る</Button>
     </Box>
     <Box sx={{pt: 2}}>
-       <Button variant="contained" onClick={()=> setCode(123)} fullWidth >コードを確定</Button>
+       <Button variant="contained" onClick={()=> setCode(inputValue)} fullWidth >コードを確定</Button>
     </Box>
     </Box>);
 }
