@@ -137,7 +137,7 @@ const onRegister: SubmitHandler<FormInput> = (data: FormInput) => {
           sx={{my: 1}}
           {...register('tally')}
           error={'tally' in errors}
-          helperText={errors.tally?.message}
+          helperText="合言葉は現地スタッフに確認してください"
         />
 
     <Button variant="contained" color="primary" sx={buttonSx} 

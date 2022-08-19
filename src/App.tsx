@@ -5,6 +5,7 @@ import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import EventNoteIcon from "@mui/icons-material/EventNote";
 import HelpIcon from "@mui/icons-material/Help";
 import QrCode2Icon from "@mui/icons-material/QrCode2";
+import HikingIcon from '@mui/icons-material/Hiking';
 
 import MyAppBar from "./components/appbar";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
@@ -18,6 +19,7 @@ import PayView from "./pages/PayView";
 import ReceiveView from "./pages/ReceiveView";
 import HelpView from "./pages/HelpView";
 import MenuView from "./pages/MenuView";
+import ScheduleView from "./pages/ScheduleView";
 
 import "./App.css";
 
@@ -109,6 +111,7 @@ function App() {
             <Route path="/pay" element={<PayView />} />
             <Route path="/receive" element={<ReceiveView />} />
             <Route path="/help" element={<HelpView />} />
+            <Route path="/schedule" element={<ScheduleView />} />
           </Routes>
           <BottomNavigation
             showLabels
@@ -132,7 +135,13 @@ function App() {
               label="イベント"
               icon={<EventNoteIcon fontSize="large" />}
               component={Link}
-              to="/register"
+              to="/schedule"
+            />
+            <BottomNavigationAction
+              label="入山状況"
+              icon={<HikingIcon fontSize="large" />}
+              component={Link}
+              to="/status"
             />
             <BottomNavigationAction
               label="規約"

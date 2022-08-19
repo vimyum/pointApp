@@ -82,7 +82,11 @@ const ReceiveView: React.FC = () => {
     );
 
     if (snapshot?.exists()) {
-      setTicket({...snapshot.val(), ticketId: code});
+      const ticketTemp = {...snapshot.val(), ticketId: code}
+      if (!ticketTemp.history) {
+        ticketTemp.history = {};
+      }
+      setTicket(ticketTemp);
     } else {
       console.log("No data available");
       Swal.fire({

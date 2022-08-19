@@ -19,7 +19,7 @@ const ManualInput: React.FC<ManualInputProps> = ({setCode, setExit, pay = false}
     setInputValue(event.target.value);
   };
 
-  const typeOfCodeStr = pay ? '利用先コード' : 'ポイント受け取りコード';
+  const typeOfCodeStr = pay ? '支払い先コード' : 'ポイント受け取りコード';
   return (<Box sx={{flexDirection: 'column', textAlign: 'center', justifyContent: 'center', display: 'flex', py: 8, px: 5}}>
     <Box>
       <Typography component="div" variant="h6" sx={{my:2}}>

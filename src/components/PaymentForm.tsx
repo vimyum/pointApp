@@ -42,7 +42,7 @@ const PaymentForm: React.FC<PaymentFormProps> = (props) => {
          <TextField
           label="利用ポイント額"
           error={parseInt(inputValue) > userInfo.balance}
-          helperText="ポイント残高が足りません"
+          helperText={parseInt(inputValue) > userInfo.balance ? "ポイント残高が足りません" : ""}
           value={inputValue}
           variant="outlined"
           fullWidth={true}
@@ -51,7 +51,7 @@ const PaymentForm: React.FC<PaymentFormProps> = (props) => {
         />
     </Box>
     <Box>
-      <Button onClick={() => { callback(inputValue) }} size="small" variant="contained"
+      <Button onClick={() => { callback(parseInt(inputValue)) }} size="small" variant="contained"
        sx={buttonSx} disabled={parseInt(inputValue) > userInfo.balance}>
         利用する
       </Button>

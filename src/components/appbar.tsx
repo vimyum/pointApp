@@ -4,8 +4,9 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+// import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import ForestIcon from '@mui/icons-material/Forest';
 
 const MyAppBar = (props: any) => {
     const auth = true;
@@ -21,10 +22,10 @@ return (
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            <MenuIcon />
+            <ForestIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Heritage Keeper App
+            Heritage Keeper
           </Typography>
           {auth && (
             <div>
