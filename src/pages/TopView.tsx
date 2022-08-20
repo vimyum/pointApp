@@ -38,7 +38,7 @@ const TopView: React.FC<Props> = (props) => {
     </Typography>
 </Box>
 <Box sx={boxSx}>
-    <Button variant="outlined" color="primary" component={Link} to="/pay" sx={buttonSx} >
+    <Button variant="outlined" color="primary" component={Link} to="/read" sx={buttonSx} >
       ポイントを利用する
     </Button>
 </Box>

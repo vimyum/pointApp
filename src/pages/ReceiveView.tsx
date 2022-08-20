@@ -10,7 +10,7 @@ import { UserContext } from "../App";
 import { UserDbInfo } from "../schemas/schema";
 import Scan from "../components/Scan";
 import ManualInput from "../components/ManualInput";
-import ConfirmCard from "../components/ConfirmCard";
+import ConfirmCard from "../components/TicketCard";
 import Swal from "sweetalert2";
 import { getDatabase, ref, child, get, update } from "firebase/database";
 

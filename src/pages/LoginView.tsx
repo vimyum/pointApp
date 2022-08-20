@@ -2,18 +2,13 @@ import { useRef, useState, useCallback } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
 
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import TextField from '@mui/material/TextField';
-
-import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
-
-import { UserDbInfo } from "../schemas/schema";
 import {auth} from "../App"
 import {signInWithEmailAndPassword} from "firebase/auth";
 

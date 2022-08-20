@@ -21,6 +21,7 @@ import HelpView from "./pages/HelpView";
 import MenuView from "./pages/MenuView";
 import ScheduleView from "./pages/ScheduleView";
 import StatusView from "./pages/StatusView";
+import ReadView from "./pages/ReadView";
 
 import "./App.css";
 
@@ -110,6 +111,7 @@ function App() {
               element={<TopView userInfo={userInfo as UserDbInfo} />}
             />
             <Route path="/pay" element={<PayView />} />
+            <Route path="/read" element={<ReadView />} />
             <Route path="/receive" element={<ReceiveView />} />
             <Route path="/help" element={<HelpView />} />
             <Route path="/schedule" element={<ScheduleView />} />

@@ -16,7 +16,7 @@ interface ConfirmCardProps {
   used: boolean;
 }
 
-const ConfirmCard: React.FC<ConfirmCardProps> = (props) => {
+const TicketCard: React.FC<ConfirmCardProps> = (props) => {
   const {callback, cardPicture, point, comment, used} = props;
   const navigate = useNavigate();
 
@@ -53,4 +53,4 @@ const ConfirmCard: React.FC<ConfirmCardProps> = (props) => {
     </Box>);
 }
 
-export default ConfirmCard;
+export default TicketCard;

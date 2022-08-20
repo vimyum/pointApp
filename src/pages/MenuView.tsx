@@ -2,11 +2,9 @@ import { useRef, useState, useCallback } from "react";
 
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import LoginView from "./LoginView";
 import RegisterView from "./RegisterView";
-
 import { UserDbInfo } from "../schemas/schema";
 
 const buttonSx = {

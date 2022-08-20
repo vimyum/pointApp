@@ -1,8 +1,6 @@
 import { useRef, useState, useCallback } from "react";
 import Webcam from "react-webcam";
 import jsQR from "jsqr";
-
-import logo from './logo.svg'
 import './App.css'
 
 const videoConstraints = {
