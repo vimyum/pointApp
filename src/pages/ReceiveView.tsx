@@ -5,6 +5,7 @@ import Button from "@mui/material/Button";
 
 import { Link, useNavigate } from "react-router-dom";
 
+import { Ticket } from "../schemas/schema";
 import { UserContext } from "../App";
 import { UserDbInfo } from "../schemas/schema";
 import Scan from "../components/Scan";
@@ -20,18 +21,6 @@ const videoConstraints = {
   width: videoWidth,
   height: videoHeight,
   facingMode: "user",
-};
-
-type History = {
-  name: string;
-  date: number;
-};
-type Ticket = {
-  ticketId: string;
-  amount: number;
-  comment: string;
-  history: Record<string, History>;
-  picture: string;
 };
 
 const ReceiveView: React.FC = () => {

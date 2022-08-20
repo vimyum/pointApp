@@ -20,6 +20,7 @@ import ReceiveView from "./pages/ReceiveView";
 import HelpView from "./pages/HelpView";
 import MenuView from "./pages/MenuView";
 import ScheduleView from "./pages/ScheduleView";
+import StatusView from "./pages/StatusView";
 
 import "./App.css";
 
@@ -112,6 +113,7 @@ function App() {
             <Route path="/receive" element={<ReceiveView />} />
             <Route path="/help" element={<HelpView />} />
             <Route path="/schedule" element={<ScheduleView />} />
+            <Route path="/status" element={<StatusView />} />
           </Routes>
           <BottomNavigation
             showLabels
@@ -138,10 +140,11 @@ function App() {
               to="/schedule"
             />
             <BottomNavigationAction
-              label="入山状況"
+              label="滞在状況"
               icon={<HikingIcon fontSize="large" />}
               component={Link}
               to="/status"
+              sx={{display: userInfo.role == "user" ? "none" : "visible"}}
             />
             <BottomNavigationAction
               label="規約"
