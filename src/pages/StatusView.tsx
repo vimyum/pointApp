@@ -83,20 +83,20 @@ const StatusView: React.FC = () => {
 
   return (
     <div>
-      <Container maxWidth="xs" sx={{ mt: 5, mb: 1, fontSize: "small" }}>
+      <Container maxWidth="xs" sx={{ mt: 2, mb: 1, }}>
         <Typography
           component="h5"
           variant="h5"
           sx={{ textAlign: "center", my: 3 }}
         >
-          現在の滞在状況
+        現在の滞在状況
         </Typography>
         <Card variant="outlined" sx={{ my: 2 }}>
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
               滞在中
-        </Typography>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary">
+            </Typography>
+            <Typography sx={{ fontSize: 16 }} color="text.secondary">
               <ul>
                 {stayingList({
                   enteredHistory: entered,
@@ -112,7 +112,7 @@ const StatusView: React.FC = () => {
             <Typography gutterBottom variant="h5" component="div">
               帰宅済
         </Typography>
-            <Typography sx={{ fontSize: 14 }} color="text.secondary">
+            <Typography sx={{ fontSize: 16 }} color="text.secondary">
               <ul>
                 {exitedList(exited)}
               </ul>

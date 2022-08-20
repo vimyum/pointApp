@@ -64,7 +64,7 @@ const LoginView: React.FC<{handleCancel: any}> = (props) => {
   });
 
   return (<div>
-   <Container maxWidth="xs" sx={{mt: 5, mb: 1}}>
+   <Container maxWidth="xs" sx={{mt: 5, mb: 1, }}>
     <Typography component="h5" variant="h5" sx={{textAlign: 'center'}}>
       サインイン
     </Typography>
